@@ -35,17 +35,17 @@ def call() {
                     }
                 }
             }
-            // stage('Docker Push') {
-            //     steps {
-            //         script {
-            //             withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-            //                 sh "docker login -u naresh2603 -p ${dockerPassword}"
-            //                 sh 'docker push naresh2603/multi:v2'
-            //                 sh 'docker rmi naresh2603/multi:v2'
-            //             }
-            //         }
-            //     }
-            // }
+            stage('Docker Push') {
+                steps {
+                    script {
+                        withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
+                            sh "docker login -u naresh2603 -p ${dockerPassword}"
+                            sh 'docker push naresh2603/multi:v2'
+                            sh 'docker rmi naresh2603/multi:v2'
+                        }
+                    }
+                }
+            }
             // stage('Deploy on k8s') {
             //     steps {
             //         script {
